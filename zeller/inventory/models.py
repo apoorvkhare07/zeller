@@ -51,14 +51,13 @@ class Film(AbstractBase):
 
 
 class Stock(AbstractBase):
-    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=512)
     acquired_on = models.DateTimeField(null=False, blank=False)
     buying_price = models.DecimalField(max_digits=6, decimal_places=2)
-    selling_price = models.DecimalField(max_digits=6, decimal_places=2)
     acquired_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL,
                                     related_name='stock_acquired')
     acquiring_cost = models.DecimalField(max_digits=6, decimal_places=2)
     paid_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='stock_paid_for')
     seller = models.ForeignKey(Seller, null=True, blank=True,  on_delete=models.SET_NULL)
     # specifications = JSONField(default={})
+
